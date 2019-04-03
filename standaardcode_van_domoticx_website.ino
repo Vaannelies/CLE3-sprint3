@@ -26,9 +26,10 @@ void loop() {
 
   if (digitalRead(7) == LOW) {
      strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
-  strip.setPixelColor(1, 255, 0, 220); //Pixel 2 GROEN
+  strip.setPixelColor(1, 255, 255, 255); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
-   strip.setPixelColor(3, 0, 0, 200); //Pixel 3 BLAUW
+   strip.setPixelColor(3, 255, 255, 255);
+   strip.setBrightness(50);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
 
   }
