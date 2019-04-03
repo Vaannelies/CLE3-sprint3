@@ -28,6 +28,7 @@ void loop() {
      strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
   strip.setPixelColor(1, 255, 0, 220); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
+   strip.setPixelColor(3, 0, 0, 200); //Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
 
   }
@@ -36,6 +37,7 @@ void loop() {
      strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
   strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
+   strip.setPixelColor(3, 255, 0, 0); //Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
 
   }
