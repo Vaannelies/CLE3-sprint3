@@ -21,7 +21,10 @@
 //   NEO_KHZ800  800 KHz bitstream (most NeoPixel products WS2812 LEDs)
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
- 
+ int randNumber(){
+  return random(0, 4);
+}
+
 void setup() {
   strip.begin();
   strip.show();  //Zet hier alle pixels op uit.
@@ -39,7 +42,7 @@ void loop() {
 
 //als je een andere lamp selecteert, ga je terug naar level 0
 
-  if (level == 0) {
+     if (level == 0) {
     
   strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
   strip.setPixelColor(1, 255, 255, 255); //Pixel 2 GROEN
@@ -52,22 +55,15 @@ void loop() {
  
 
       if (digitalRead(buttonpin) == HIGH){
-        level = 1;
-        
+        level = 1;      
            
       }
   }
 
-  
-
   if (level == 1) {
    
-    int randNumber;
- randNumber = random(0, 4);
-   
-
-    strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(randNumber, 255, 0, 200); //Pixel 3 BLAUW
+  strip.show(); //Laat de kleuren zien!
+  strip.setPixelColor(randNumber(), 255, 0, 200); //Pixel 3 BLAUW
   
   strip.setBrightness(50);//Pixel 3 BLAUW
 
@@ -79,13 +75,10 @@ void loop() {
   
   if (level == 2) {
    
-    int randNumber;
-   randNumber = random(0, 4);
    
 
-    strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(randNumber, 255, 0, 0); //Pixel 3 BLAUW
-  
+  strip.show(); //Laat de kleuren zien!
+  strip.setPixelColor(randNumber(), 255, 0, 0); //Pixel 3 BLAUW
   strip.setBrightness(50);//Pixel 3 BLAUW
 
 
