@@ -16,7 +16,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
 void setup() {
   strip.begin();
   strip.show();  //Zet hier alle pixels op uit.
-  pinMode(A0, INPUT);
+  pinMode(7, INPUT);
     strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
  
 }
@@ -24,7 +24,7 @@ void setup() {
 void loop() {
 
 
-  if (analogRead(A0) > 950) {
+  if (digitalRead(7) == LOW) {
      strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
   strip.setPixelColor(1, 255, 0, 220); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
@@ -32,7 +32,7 @@ void loop() {
 
   }
 
-   if (analogRead(A0) >! 950) {
+   if (digitalRead(7) == HIGH) {
      strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
   strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
