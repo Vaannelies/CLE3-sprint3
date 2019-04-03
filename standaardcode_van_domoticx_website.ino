@@ -2,7 +2,7 @@
  
 #define PIN 6
 #define LEDS 8
- 
+
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
 // Parameter 3 = pixel type flags, add together as needed
@@ -16,11 +16,27 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
 void setup() {
   strip.begin();
   strip.show();  //Zet hier alle pixels op uit.
+  pinMode(A0, INPUT);
+    strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
+ 
 }
  
 void loop() {
-  strip.setPixelColor(0, 255, 0, 0); //Pixel 1 ROOD
-  strip.setPixelColor(1, 0, 255, 0); //Pixel 2 GROEN
-  strip.setPixelColor(2, 0, 0, 255); //Pixel 3 BLAUW
+
+
+  if (analogRead(A0) > 950) {
+     strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
+  strip.setPixelColor(1, 255, 0, 220); //Pixel 2 GROEN
+  strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
+
+  }
+
+   if (analogRead(A0) >! 950) {
+     strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
+  strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
+  strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
+  strip.show(); //Laat de kleuren zien!
+
+  }
 }
