@@ -5,6 +5,7 @@
 
   int level = 0;
   int buttonpin = 3;
+  bool lamp;
 
   
   String knop0 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
@@ -22,32 +23,31 @@
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
  int randNumber(){
-   for(int i=0; i < 2; i++){
-  int hoi = random(0, 4);
+  
+  int hoi = random(1,3);
      return hoi;
    }
 
-}
+
 
   int level1(){  
-  strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(randNumber(), 255, 0, 200); //Pixel 3 BLAUW
-  Serial.print(randNumber());
-  strip.setBrightness(50);//Pixel 3 BLAUW
+ strip.setPixelColor(1,0,0,0);
     
-   
-      if (digitalRead(4) == HIGH){
-        level = 2;
-        }
+  strip.setPixelColor(randNumber(), 255, 0, 200); //Pixel 3 BLAUW
+  
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    strip.show(); //Laat de kleuren zien!
+    
     
   }
    
 
 
 void setup() {
+  randomSeed(analogRead(A0));
 Serial.begin(9600);
   for(int i = 0; i < 4; i++){
-Serial.print("hoi");
+Serial.println("");
 }
 }
   
@@ -74,7 +74,7 @@ void loop() {
      if (level == 0) {
     
   strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
-  strip.setPixelColor(1, 255, 255, 255); //Pixel 2 GROEN
+  strip.setPixelColor(1, 0, 0, 255); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
   strip.setPixelColor(3, 0, 0, 0);
   strip.setBrightness(50);//Pixel 3 BLAUW
@@ -98,11 +98,21 @@ void loop() {
   
   
 
-  if (level == 1) {
-    for(int i = 0; i <= 1; i++){
+  if (level == 1) 
+  {
+    if(lamp == false)
+    {
+      for(int i = 0; i < 1; i++)
+      {
       level1(); 
-      
-    } }
+      }
+    }
+    lamp = true;
+    if (digitalRead(4) == HIGH)
+    {
+      level = 2;
+    }
+  }
 
   
   
