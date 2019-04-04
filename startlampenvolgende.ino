@@ -1,10 +1,10 @@
 #include <Adafruit_NeoPixel.h>
  
-#define PIN 6
+#define PIN 2
 #define LEDS 8
 
   int level = 0;
-  int buttonpin = 2;
+  int buttonpin = 3;
 
   
   String knop0 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
@@ -22,17 +22,36 @@
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
  int randNumber(){
-  return random(0, 4);
+   for(int i=0; i < 2; i++){
+  int hoi = random(0, 4);
+     return hoi;
+   }
+
 }
+
+  int level1(){  
+  strip.show(); //Laat de kleuren zien!
+  strip.setPixelColor(randNumber(), 255, 0, 200); //Pixel 3 BLAUW
+  Serial.print(randNumber());
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    
+   
+      if (digitalRead(4) == HIGH){
+        level = 2;
+        }
+    
+  }
+   
+
 
 void setup() {
-  strip.begin();
-  strip.show();  //Zet hier alle pixels op uit.
-  pinMode(buttonpin, INPUT);
-  pinMode(3,INPUT);
-
-
+Serial.begin(9600);
+  for(int i = 0; i < 4; i++){
+Serial.print("hoi");
 }
+}
+  
+
  
 void loop() {
 //als level 0 is, laat de middelste lamp branden en markeer die als 'active led'.
@@ -42,6 +61,16 @@ void loop() {
 
 //als je een andere lamp selecteert, ga je terug naar level 0
 
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
      if (level == 0) {
     
   strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
@@ -59,19 +88,34 @@ void loop() {
            
       }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   if (level == 1) {
-   
-  strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(randNumber(), 255, 0, 200); //Pixel 3 BLAUW
+    for(int i = 0; i <= 1; i++){
+      level1(); 
+      
+    } }
+
   
-  strip.setBrightness(50);//Pixel 3 BLAUW
-
-
-      if (digitalRead(3) == HIGH){
-        level = 2;
-  }}
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   if (level == 2) {
    
@@ -92,4 +136,6 @@ void loop() {
       }
   }
   */
-  }  
+ 
+
+}
