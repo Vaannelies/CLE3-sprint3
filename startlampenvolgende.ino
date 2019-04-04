@@ -24,7 +24,7 @@
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
  int randNumber(){
   
-  int hoi = random(1,3);
+  int hoi = random(2,4);
      return hoi;
    }
 
@@ -32,11 +32,12 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
 
   int level1(){  
  strip.setPixelColor(1,0,0,0);
-    
-  strip.setPixelColor(randNumber(), 255, 0, 200); //Pixel 3 BLAUW
+    int e = randNumber();
+  strip.setPixelColor(e, 255, 0, 200); //Pixel 3 BLAUW
   
   strip.setBrightness(50);//Pixel 3 BLAUW
     strip.show(); //Laat de kleuren zien!
+    return e;
     
     
   }
@@ -73,8 +74,8 @@ void loop() {
   
      if (level == 0) {
     
-  strip.setPixelColor(0, 0, 0, 0); //Pixel 1 ROOD
-  strip.setPixelColor(1, 0, 0, 255); //Pixel 2 GROEN
+  strip.setPixelColor(0, 255, 0, 0); //Pixel 1 ROOD
+  strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
   strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
   strip.setPixelColor(3, 0, 0, 0);
   strip.setBrightness(50);//Pixel 3 BLAUW
@@ -108,7 +109,7 @@ void loop() {
       }
     }
     lamp = true;
-    if (digitalRead(4) == HIGH)
+    if (digitalRead(7) == HIGH)
     {
       level = 2;
     }
@@ -132,7 +133,7 @@ void loop() {
    
 
   strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(randNumber(), 255, 0, 0); //Pixel 3 BLAUW
+  strip.setPixelColor(6, 255, 0, 0); //Pixel 3 BLAUW
   strip.setBrightness(50);//Pixel 3 BLAUW
 
 
