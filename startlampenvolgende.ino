@@ -1,10 +1,10 @@
 #include <Adafruit_NeoPixel.h>
  
-#define PIN 2
+#define PIN 10
 #define LEDS 8
 
   int level = 0;
-  int buttonpin = 3;
+  int buttonpin = 13;
   bool lamp;
 
   
@@ -109,7 +109,7 @@ void loop() {
       }
     }
     lamp = true;
-    if (digitalRead(7) == HIGH)
+    if (digitalRead(3) == HIGH)
     {
       level = 2;
     }
@@ -141,7 +141,6 @@ void loop() {
 /*
   knop1 = "active";
  
-
       if (digitalRead(buttonpin) == HIGH){
         level = 2;
       }
