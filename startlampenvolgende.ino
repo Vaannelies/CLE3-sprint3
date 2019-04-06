@@ -25,8 +25,15 @@
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
 
-
- 
+int fout(){
+  strip.setPixelColor(1,0,0,200);
+  strip.setPixelColor(2,0,0,200);
+  strip.setPixelColor(0,0,0,200);
+  strip.setPixelColor(3,0,0,200);
+  strip.show();
+  delay(200);
+  level = 0;
+}
 
   int level1(){  
  strip.setPixelColor(1,0,0,0);
@@ -101,11 +108,13 @@ void loop() {
   
   strip.setBrightness(50);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
-
+ bool lamp = false;
+  bool lamp2 = false;
+  bool lamp3 = false;
   knop1 = "active";
  
 
-      if (digitalRead(buttonpin) == HIGH){
+      if (digitalRead(13) == HIGH){
         level = 1;      
            
       }
@@ -138,6 +147,10 @@ void loop() {
       {
         level = 2;
       }
+      if (digitalRead(3) == HIGH)
+      {
+        fout();
+      }
     }
     
     if (strip.getPixelColor(3) != 0x000000)
@@ -146,6 +159,10 @@ void loop() {
       if (digitalRead(3) == HIGH)
       {
         level = 2;
+      }
+      if (digitalRead(2) == HIGH)
+      {
+        fout();
       }
     }
     
