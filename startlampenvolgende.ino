@@ -6,6 +6,8 @@
   int level = 0;
   int buttonpin = 13;
   bool lamp;
+  bool lamp2;
+  bool lamp3;
 
   
   String knop0 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
@@ -22,22 +24,43 @@
 //   NEO_KHZ800  800 KHz bitstream (most NeoPixel products WS2812 LEDs)
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
- int randNumber(){
-  
-  int hoi = random(2,4);
-     return hoi;
-   }
 
 
+ 
 
   int level1(){  
  strip.setPixelColor(1,0,0,0);
-    int e = randNumber();
+    int e = random(2,4);
   strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
   
   strip.setBrightness(50);//Pixel 3 BLAUW
     strip.show(); //Laat de kleuren zien!
-    return e;
+    
+    
+    
+  }
+
+ int level2(){  
+ strip.setPixelColor(1,0,0,0);
+    int e = random(4,6);
+  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
+  
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    strip.show(); //Laat de kleuren zien!
+    
+    
+    
+  }
+   
+
+ int level3(){  
+ strip.setPixelColor(1,0,0,0);
+    int e = random(6,8);
+  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
+  
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    strip.show(); //Laat de kleuren zien!
+    
     
     
   }
@@ -112,7 +135,7 @@ void loop() {
     
     if (strip.getPixelColor(2) != 0x000000)
     {
-      Serial.print("2");
+      Serial.println("2");
       if (digitalRead(2) == HIGH)
       {
         level = 2;
@@ -121,7 +144,7 @@ void loop() {
     
     if (strip.getPixelColor(3) != 0x000000)
     {
-    Serial.print("3");
+    Serial.println("3");
       if (digitalRead(3) == HIGH)
       {
         level = 2;
@@ -131,28 +154,113 @@ void loop() {
   }
 
   
+ 
+  
+
   
   
   
   
   
+    
+
+  if (level == 2) 
+  {
+    if(lamp2 == false)
+    {
+      for(int i = 0; i < 1; i++)
+      {
+      level2(); 
+      }
+    }
+    lamp2 = true;
+    
+    if (strip.getPixelColor(4) != 0x000000)
+    {
+      Serial.println("4");
+      if (digitalRead(4) == HIGH)
+      {
+        level = 3;
+      }
+    }
+    
+    if (strip.getPixelColor(5) != 0x000000)
+    {
+    Serial.println("5");
+      if (digitalRead(5) == HIGH)
+      {
+        level = 3;
+      }
+    }
+    
+  }
+ 
+  
+
   
   
   
   
   
+    
+
+  if (level == 3) 
+  {
+    if(lamp3 == false)
+    {
+      for(int i = 0; i < 1; i++)
+      {
+      level3(); 
+      }
+    }
+    lamp3 = true;
+    
+    if (strip.getPixelColor(6) != 0x000000)
+    {
+      Serial.println("6");
+      if (digitalRead(6) == HIGH)
+      {
+        level = 4;
+      }
+    }
+    
+    if (strip.getPixelColor(7) != 0x000000)
+    {
+    Serial.println("7");
+      if (digitalRead(7) == HIGH)
+      {
+        level = 4;
+      }
+    }
+    
+  }
+
   
-  
+  if (level == 4)
+  {
+    Serial.println("Yay!");
+    for(int i = 0; i < strip.numPixels(); i++)
+    {
+      strip.setPixelColor(i,255,0,255);
+      strip.show();
+      delay(25);
+    }
+    
+   
+    
+  }
+  /*
+ 
   if (level == 2) {
    
    
 
   strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(6, 255, 0, 0); //Pixel 3 BLAUW
+  strip.setPixelColor(4, 255, 0, 0); //Pixel 3 BLAUW
   strip.setBrightness(50);//Pixel 3 BLAUW
 
 
-      }
+      }  */
 /*
   knop1 = "active";
  
