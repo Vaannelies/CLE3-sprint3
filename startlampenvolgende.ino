@@ -246,7 +246,7 @@ void loop() {
       delay(25);
     }
     
-   
+   level = 0;
     
   }
   /*
