@@ -243,6 +243,7 @@ void loop() {
       strip.show();
       delay(25);
     }
+    delay(200);
     
    level = 0;
     
