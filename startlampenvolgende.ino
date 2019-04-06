@@ -33,7 +33,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
   int level1(){  
  strip.setPixelColor(1,0,0,0);
     int e = randNumber();
-  strip.setPixelColor(e, 255, 0, 200); //Pixel 3 BLAUW
+  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
   
   strip.setBrightness(50);//Pixel 3 BLAUW
     strip.show(); //Laat de kleuren zien!
@@ -109,10 +109,25 @@ void loop() {
       }
     }
     lamp = true;
-    if (digitalRead(3) == HIGH)
+    
+    if (strip.getPixelColor(2) != 0x000000)
     {
-      level = 2;
+      Serial.print("2");
+      if (digitalRead(2) == HIGH)
+      {
+        level = 2;
+      }
     }
+    
+    if (strip.getPixelColor(3) != 0x000000)
+    {
+    Serial.print("3");
+      if (digitalRead(3) == HIGH)
+      {
+        level = 2;
+      }
+    }
+    
   }
 
   
