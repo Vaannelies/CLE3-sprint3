@@ -96,11 +96,9 @@ void loop() {
   
   
      if (level == 0) {
-    
+    strip.clear();
   strip.setPixelColor(0, 255, 0, 0); //Pixel 1 ROOD
-  strip.setPixelColor(1, 0, 0, 0); //Pixel 2 GROEN
-  strip.setPixelColor(2, 0, 0, 0); //Pixel 3 BLAUW
-  strip.setPixelColor(3, 0, 0, 0);
+  
   strip.setBrightness(50);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
 
