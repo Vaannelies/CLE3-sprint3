@@ -122,9 +122,13 @@ void loop() {
   knop1 = "active";
  
 
-      if (digitalRead(13) == HIGH){
+      if (digitalRead(13) == HIGH)
+      {
         level = 1;      
-           
+      }
+      if (digitalRead(12) == HIGH)
+      {
+        fout();
       }
   }
   
@@ -195,6 +199,7 @@ void loop() {
       {
       level2(); 
       }
+      
     }
     lamp2 = true;
     
@@ -205,6 +210,10 @@ void loop() {
       {
         level = 3;
       }
+      if (digitalRead(5) == HIGH)
+      {
+        fout();
+      }
     }
     
     if (strip.getPixelColor(5) != 0x000000)
@@ -213,6 +222,10 @@ void loop() {
       if (digitalRead(5) == HIGH)
       {
         level = 3;
+      }
+      if (digitalRead(4) == HIGH)
+      {
+        fout();
       }
     }
     
@@ -245,6 +258,10 @@ void loop() {
       {
         level = 4;
       }
+      if (digitalRead(7) == HIGH)
+      {
+        fout();
+      }
     }
     
     if (strip.getPixelColor(7) != 0x000000)
@@ -253,6 +270,10 @@ void loop() {
       if (digitalRead(7) == HIGH)
       {
         level = 4;
+      }
+      if (digitalRead(6) == HIGH)
+      {
+        fout();
       }
     }
     
