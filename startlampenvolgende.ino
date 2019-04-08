@@ -124,9 +124,12 @@ void loop() {
 
       if (digitalRead(13) == HIGH)
       {
+        strip.clear();
         level = 1;      
       }
-      if (digitalRead(12) == HIGH)
+      if (digitalRead(12) == HIGH) 
+         
+         
       {
         fout();
       }
@@ -157,9 +160,17 @@ void loop() {
       Serial.println("2");
       if (digitalRead(2) == HIGH)
       {
+        strip.clear();
         level = 2;
       }
-      if (digitalRead(3) == HIGH)
+      if ((digitalRead(3) == HIGH)  || 
+          (digitalRead(13) == HIGH)  ||
+          (digitalRead(12) == HIGH) ||
+          (digitalRead(4) == HIGH)  ||
+          (digitalRead(5) == HIGH)  ||
+          (digitalRead(6) == HIGH)  ||
+          (digitalRead(7) == HIGH)
+         )
       {
         fout();
       }
@@ -170,9 +181,17 @@ void loop() {
     Serial.println("3");
       if (digitalRead(3) == HIGH)
       {
+        strip.clear();
         level = 2;
       }
-      if (digitalRead(2) == HIGH)
+      if ((digitalRead(2) == HIGH)  || 
+          (digitalRead(12) == HIGH) ||
+          (digitalRead(13) == HIGH) ||
+          (digitalRead(4) == HIGH)  ||
+          (digitalRead(5) == HIGH)  ||
+          (digitalRead(6) == HIGH)  ||
+          (digitalRead(7) == HIGH)
+         )
       {
         fout();
       }
@@ -208,9 +227,17 @@ void loop() {
       Serial.println("4");
       if (digitalRead(4) == HIGH)
       {
+        strip.clear();
         level = 3;
       }
-      if (digitalRead(5) == HIGH)
+      if ((digitalRead(5) == HIGH)  || 
+          (digitalRead(2) == HIGH)  ||
+          (digitalRead(3) == HIGH)  ||
+          (digitalRead(13) == HIGH) ||
+          (digitalRead(12) == HIGH) ||
+          (digitalRead(6) == HIGH)  ||
+          (digitalRead(7) == HIGH)
+         )
       {
         fout();
       }
@@ -221,9 +248,17 @@ void loop() {
     Serial.println("5");
       if (digitalRead(5) == HIGH)
       {
+        strip.clear();
         level = 3;
       }
-      if (digitalRead(4) == HIGH)
+      if ((digitalRead(4) == HIGH)  || 
+          (digitalRead(2) == HIGH)  ||
+          (digitalRead(3) == HIGH)  ||
+          (digitalRead(12) == HIGH) ||
+          (digitalRead(13) == HIGH) ||
+          (digitalRead(6) == HIGH)  ||
+          (digitalRead(7) == HIGH)
+         )
       {
         fout();
       }
@@ -256,9 +291,17 @@ void loop() {
       Serial.println("6");
       if (digitalRead(6) == HIGH)
       {
+        strip.clear();
         level = 4;
       }
-      if (digitalRead(7) == HIGH)
+      if ((digitalRead(7) == HIGH) || 
+          (digitalRead(2) == HIGH)  ||
+          (digitalRead(3) == HIGH)  ||
+          (digitalRead(4) == HIGH)  ||
+          (digitalRead(5) == HIGH)  ||
+          (digitalRead(13) == HIGH) ||
+          (digitalRead(12) == HIGH)
+         )
       {
         fout();
       }
@@ -269,9 +312,17 @@ void loop() {
     Serial.println("7");
       if (digitalRead(7) == HIGH)
       {
+        strip.clear();
         level = 4;
       }
-      if (digitalRead(6) == HIGH)
+      if ((digitalRead(6) == HIGH) || 
+          (digitalRead(2) == HIGH)  ||
+          (digitalRead(3) == HIGH)  ||
+          (digitalRead(4) == HIGH)  ||
+          (digitalRead(5) == HIGH)  ||
+          (digitalRead(12) == HIGH) ||
+          (digitalRead(13) == HIGH)
+         )
       {
         fout();
       }
