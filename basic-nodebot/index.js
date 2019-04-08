@@ -1,6 +1,25 @@
-import {Board, Led, Button} from 'johnny-five';
-
-// Make variables for objects we'll be using
+// @flow
+/* eslint-disable no-console */
+import {Board, Led} from 'johnny-five';
+import express from 'express';
+import { Server } from 'http';
+import socketIO from 'socket.io';
+// Make a new Express app
+const app = express();
+// flow-disable-next-line
+const http = Server(app);
+// Make a new Socket.IO instance and listen to the http port
+const io = socketIO.listen(http);
+// We have a dist directory, but use '/static' to fetch it.
+app.use('/static', express.static('dist'));
+// When the client is on the root, show the HTML file.
+app.get('/', (req, res) => {
+  res.sendFile(`C:/Users/thoma/OneDrive/Bureaublad/Code/School/periode3/CLE3/basic-nodebot/index.html`);
+});
+// Set the server to port 8000 and send the HTML from there.
+http.listen(8000, () => {
+  console.log('Server running on Port 8000');
+});
 
 // Set `lightOn` to true as a default since our LED will be on
 let lightOn = true;
@@ -15,25 +34,30 @@ board.on('ready', function() {
   // Make a new Led object and connect it to pin 9
   const led = new Led(9);
 
-  // Make a new Button object assigned to pin 7
-  // We also need to say it is a pullup resistor!
-  const pushButton = new Button({
-    pin: 7,
-    isPullup: true,
-  });
-
-  // Switch it on!
-  led.on();
-
-  // If the button is pressed, toggle the LED on or off
-  pushButton.on('down', () => {
-    if (lightOn) {
-      led.off();
-      lightOn = false;
-    } else {
-      led.on();
-      lightOn = true;
-    }
+  /**
+   *
+   * Server-Side Socket Events
+   *
+   * When the client-side has connected, output the status to console.
+   * Then, send the current LED status to the client-side.
+   *
+   * When the LED is toggled from the client-side, update the lightOn variable.
+   * Depending on the boolean sent, turn on or off the LED.
+   *
+   */
+  io.on('connect', (socket) => {
+    console.log('[socket.io] Client has connected to server!');
+    socket.emit('light-state', lightOn);
+    socket.on('light-toggle', (lightToggle) => {
+      lightOn = lightToggle;
+      // Log the current state of the LED.
+      console.log(`[socket.io] Light is now ${lightOn ? 'on' : 'off'}.`);
+      if (lightOn) {
+        led.on();
+      } else {
+        led.stop().off();
+      }
+    });
   });
 
   // REPL object so we can interact with our LED
