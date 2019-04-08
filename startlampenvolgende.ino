@@ -32,6 +32,16 @@ int fout(){
   strip.setPixelColor(3,0,0,200);
   strip.show();
   delay(200);
+  bool lamp = false;
+  bool lamp2 = false;
+  bool lamp3 = false;
+  level = 0;
+}
+
+int gehaald(){
+  bool lamp = false;
+  bool lamp2 = false;
+  bool lamp3 = false;
   level = 0;
 }
 
@@ -108,9 +118,7 @@ void loop() {
   
   strip.setBrightness(50);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
- bool lamp = false;
-  bool lamp2 = false;
-  bool lamp3 = false;
+ 
   knop1 = "active";
  
 
@@ -262,7 +270,7 @@ void loop() {
     }
     delay(200);
     
-   level = 0;
+   gehaald();
     
   }
   /*
@@ -270,12 +278,9 @@ void loop() {
   if (level == 2) {
    
    
-
   strip.show(); //Laat de kleuren zien!
   strip.setPixelColor(4, 255, 0, 0); //Pixel 3 BLAUW
   strip.setBrightness(50);//Pixel 3 BLAUW
-
-
       }  */
 /*
   knop1 = "active";
