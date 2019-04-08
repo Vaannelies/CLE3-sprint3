@@ -9,12 +9,7 @@
   bool lamp2;
   bool lamp3;
 
-  
-  String knop0 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
-  String knop1 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
-  String knop2 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
-  String knop3 = "inactive"; //lampen 0 t/m 15. Lamp 1 is dus de middelste van de 3 lampen op de eerste rij. Lamp 0 is de eerste.
-
+ 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
 // Parameter 3 = pixel type flags, add together as needed
@@ -30,18 +25,22 @@ int fout(){
   strip.setPixelColor(2,0,0,200);
   strip.setPixelColor(0,0,0,200);
   strip.setPixelColor(3,0,0,200);
+   strip.setPixelColor(4,0,0,200);
+  strip.setPixelColor(5,0,0,200);
+  strip.setPixelColor(6,0,0,200);
+  strip.setPixelColor(7,0,0,200);
   strip.show();
   delay(200);
-  bool lamp = false;
-  bool lamp2 = false;
-  bool lamp3 = false;
+   lamp = false;
+   lamp2 = false;
+   lamp3 = false;
   level = 0;
 }
 
 int gehaald(){
-  bool lamp = false;
-  bool lamp2 = false;
-  bool lamp3 = false;
+  lamp = false;
+   lamp2 = false;
+  lamp3 = false;
   level = 0;
 }
 
@@ -118,13 +117,13 @@ void loop() {
   
   strip.setBrightness(50);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
- 
-  knop1 = "active";
+
  
 
       if (digitalRead(13) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 1;      
       }
       if (digitalRead(12) == HIGH) 
@@ -161,6 +160,7 @@ void loop() {
       if (digitalRead(2) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 2;
       }
       if ((digitalRead(3) == HIGH)  || 
@@ -182,6 +182,7 @@ void loop() {
       if (digitalRead(3) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 2;
       }
       if ((digitalRead(2) == HIGH)  || 
@@ -228,6 +229,7 @@ void loop() {
       if (digitalRead(4) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 3;
       }
       if ((digitalRead(5) == HIGH)  || 
@@ -249,6 +251,7 @@ void loop() {
       if (digitalRead(5) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 3;
       }
       if ((digitalRead(4) == HIGH)  || 
@@ -292,6 +295,7 @@ void loop() {
       if (digitalRead(6) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 4;
       }
       if ((digitalRead(7) == HIGH) || 
@@ -313,6 +317,7 @@ void loop() {
       if (digitalRead(7) == HIGH)
       {
         strip.clear();
+        delay(50);
         level = 4;
       }
       if ((digitalRead(6) == HIGH) || 
