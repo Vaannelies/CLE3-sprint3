@@ -19,97 +19,9 @@
 //   NEO_KHZ800  800 KHz bitstream (most NeoPixel products WS2812 LEDs)
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
-
-int fout(){
-  strip.setPixelColor(1,0,0,200);
-  strip.setPixelColor(2,0,0,200);
-  strip.setPixelColor(0,0,0,200);
-  strip.setPixelColor(3,0,0,200);
-   strip.setPixelColor(4,0,0,200);
-  strip.setPixelColor(5,0,0,200);
-  strip.setPixelColor(6,0,0,200);
-  strip.setPixelColor(7,0,0,200);
-  strip.show();
-  delay(200);
-   lamp = false;
-   lamp2 = false;
-   lamp3 = false;
-  level = 0;
-}
-
-int gehaald(){
-  lamp = false;
-   lamp2 = false;
-  lamp3 = false;
-  level = 0;
-}
-
-  int level1(){  
- strip.setPixelColor(1,0,0,0);
-    int e = random(2,4);
-  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
-  
-  strip.setBrightness(50);//Pixel 3 BLAUW
-    strip.show(); //Laat de kleuren zien!
+int hinkelmodus()
+{
     
-    
-    
-  }
-
- int level2(){  
- strip.setPixelColor(1,0,0,0);
-    int e = random(4,6);
-  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
-  
-  strip.setBrightness(50);//Pixel 3 BLAUW
-    strip.show(); //Laat de kleuren zien!
-    
-    
-    
-  }
-   
-
- int level3(){  
- strip.setPixelColor(1,0,0,0);
-    int e = random(6,8);
-  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
-  
-  strip.setBrightness(50);//Pixel 3 BLAUW
-    strip.show(); //Laat de kleuren zien!
-    
-    
-    
-  }
-   
-
-
-void setup() {
-  randomSeed(analogRead(A0));
-Serial.begin(9600);
-  for(int i = 0; i < 4; i++){
-Serial.println("");
-}
-}
-  
-
- 
-void loop() {
-//als level 0 is, laat de middelste lamp branden en markeer die als 'active led'.
-//als de active led wordt geselecteerd, ga je naar volgende level.
-//als level 1 is, laat een willekeurige lamp branden van de 3 lampen op die rij. markeer die brandende lamp als active led.
-//als de active led wordt geselecteerd, ga naar volgende level en laat steeds random lamp branden op volgende rij
-
-//als je een andere lamp selecteert, ga je terug naar level 0
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
   
      if (level == 0) {
     strip.clear();
@@ -350,23 +262,100 @@ void loop() {
    gehaald();
     
   }
-  /*
- 
-  if (level == 2) {
-   
-   
-  strip.show(); //Laat de kleuren zien!
-  strip.setPixelColor(4, 255, 0, 0); //Pixel 3 BLAUW
-  strip.setBrightness(50);//Pixel 3 BLAUW
-      }  */
-/*
-  knop1 = "active";
- 
-      if (digitalRead(buttonpin) == HIGH){
-        level = 2;
-      }
-  }
-  */
- 
+}
 
+
+int fout(){
+  strip.setPixelColor(1,0,0,200);
+  strip.setPixelColor(2,0,0,200);
+  strip.setPixelColor(0,0,0,200);
+  strip.setPixelColor(3,0,0,200);
+   strip.setPixelColor(4,0,0,200);
+  strip.setPixelColor(5,0,0,200);
+  strip.setPixelColor(6,0,0,200);
+  strip.setPixelColor(7,0,0,200);
+  strip.show();
+  delay(200);
+   lamp = false;
+   lamp2 = false;
+   lamp3 = false;
+  level = 0;
+}
+
+int gehaald(){
+  lamp = false;
+   lamp2 = false;
+  lamp3 = false;
+  level = 0;
+}
+
+  int level1(){  
+ strip.setPixelColor(1,0,0,0);
+    int e = random(2,4);
+  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
+  
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    strip.show(); //Laat de kleuren zien!
+    
+    
+    
+  }
+
+ int level2(){  
+ strip.setPixelColor(1,0,0,0);
+    int e = random(4,6);
+  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
+  
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    strip.show(); //Laat de kleuren zien!
+    
+    
+    
+  }
+   
+
+ int level3(){  
+ strip.setPixelColor(1,0,0,0);
+    int e = random(6,8);
+  strip.setPixelColor(e, 0xFF0000); //Pixel 3 BLAUW
+  
+  strip.setBrightness(50);//Pixel 3 BLAUW
+    strip.show(); //Laat de kleuren zien!
+    
+    
+    
+  }
+   
+
+
+void setup() 
+{
+  randomSeed(analogRead(A0));
+Serial.begin(9600);
+  for(int i = 0; i < 4; i++){
+Serial.println("");
+}
+  
+}
+  
+
+ 
+void loop() {
+  int modus = 0;
+
+  if(modus == 1)
+  {
+   hinkelmodus();
+  }
+  
+  if(modus == 2)
+  {
+   hinkelmodus();
+  }
+  
+  if(modus == 0)
+  {
+    Serial.print("We gaan ff niks doen");
+  }
+  
 }
