@@ -28,7 +28,7 @@ int hinkelmodus()
     strip.clear();
   strip.setPixelColor(7, 0, 255, 0); //Pixel 1 ROOD
   
-  strip.setBrightness(50);//Pixel 3 BLAUW
+  strip.setBrightness(100);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
 
  
@@ -258,14 +258,14 @@ int hinkelmodus()
 
 
 int fout(){
-  strip.setPixelColor(1,0,0,200);
-  strip.setPixelColor(2,0,0,200);
-  strip.setPixelColor(0,0,0,200);
-  strip.setPixelColor(3,0,0,200);
-   strip.setPixelColor(4,0,0,200);
-  strip.setPixelColor(5,0,0,200);
-  strip.setPixelColor(6,0,0,200);
-  strip.setPixelColor(7,0,0,200);
+  strip.setPixelColor(1,255,0,0);
+  strip.setPixelColor(2,255,0,0);
+  strip.setPixelColor(0,255,0,0);
+  strip.setPixelColor(3,255,0,0);
+   strip.setPixelColor(4,255,0,0);
+  strip.setPixelColor(5,255,0,0);
+  strip.setPixelColor(6,255,0,0);
+  strip.setPixelColor(7,255,0,0);
   strip.show();
   delay(200);
    lamp = false;
