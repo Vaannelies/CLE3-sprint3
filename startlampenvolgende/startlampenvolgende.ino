@@ -39,8 +39,14 @@ int hinkelmodus()
         delay(250);
         level = 1;      
       }
-      if (digitalRead(12) == HIGH) 
-         
+       if ((digitalRead(3) == HIGH)  || 
+          (digitalRead(2) == HIGH)  ||
+          (digitalRead(12) == HIGH)  ||
+          (digitalRead(4) == HIGH)  ||
+          (digitalRead(5) == HIGH)  ||
+          (digitalRead(6) == HIGH)  ||
+          (digitalRead(7) == HIGH)
+         )
          
       {
         fout();
