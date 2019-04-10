@@ -26,7 +26,7 @@ int hinkelmodus()
       strip.begin(); 
      if (level == 0) {
     strip.clear();
-  strip.setPixelColor(7, 255, 0, 0); //Pixel 1 ROOD
+  strip.setPixelColor(7, 0, 255, 0); //Pixel 1 ROOD
   
   strip.setBrightness(50);//Pixel 3 BLAUW
   strip.show(); //Laat de kleuren zien!
@@ -306,11 +306,11 @@ int gehaald(){
     int e = random(4,6);
     if(e == 4)
     {
-  strip.setPixelColor(5, 0xFF0000); //Pixel 3 BLAUW
+  strip.setPixelColor(5, 0xFFFF00); //Pixel 3 BLAUW
     }
       if(e == 5)
     {
-  strip.setPixelColor(2, 0xFF0000); //Pixel 3 BLAUW
+  strip.setPixelColor(2, 0xFF00FF); //Pixel 3 BLAUW
     }
  
   strip.setBrightness(50);//Pixel 3 BLAUW
@@ -326,11 +326,11 @@ int gehaald(){
     int e = random(6,8);
   if(e == 6)
     {
-  strip.setPixelColor(4, 0xFF0000); //Pixel 3 BLAUW
+  strip.setPixelColor(4, 0xF000FF); //Pixel 3 BLAUW
     }
       if(e == 7)
     {
-  strip.setPixelColor(3, 0xFF0000); //Pixel 3 BLAUW
+  strip.setPixelColor(3, 0x00FF00); //Pixel 3 BLAUW
     }
   
   strip.setBrightness(50);//Pixel 3 BLAUW
