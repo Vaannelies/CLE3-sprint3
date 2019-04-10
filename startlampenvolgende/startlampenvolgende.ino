@@ -267,7 +267,7 @@ int fout(){
   strip.setPixelColor(6,255,0,0);
   strip.setPixelColor(7,255,0,0);
   strip.show();
-  delay(200);
+  delay(1000);
    lamp = false;
    lamp2 = false;
    lamp3 = false;
