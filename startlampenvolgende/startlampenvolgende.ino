@@ -36,7 +36,7 @@ int hinkelmodus()
       if (digitalRead(13) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 1;      
       }
        if ((digitalRead(3) == HIGH)  || 
@@ -79,7 +79,7 @@ int hinkelmodus()
       if (digitalRead(2) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 2;
       }
       if ((digitalRead(3) == HIGH)  || 
@@ -101,7 +101,7 @@ int hinkelmodus()
       if (digitalRead(3) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 2;
       }
       if ((digitalRead(6) == HIGH)  || 
@@ -148,7 +148,7 @@ int hinkelmodus()
       if (digitalRead(4) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 3;
       }
       if ((digitalRead(5) == HIGH)  || 
@@ -170,7 +170,7 @@ int hinkelmodus()
       if (digitalRead(5) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 3;
       }
       if ((digitalRead(4) == HIGH)  || 
@@ -205,7 +205,7 @@ int hinkelmodus()
       if (digitalRead(6) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 4;
       }
       if ((digitalRead(7) == HIGH) || 
@@ -227,7 +227,7 @@ int hinkelmodus()
       if (digitalRead(7) == HIGH)
       {
         strip.clear();
-        delay(250);
+        delay(500);
         level = 4;
       }
       if ((digitalRead(6) == HIGH) || 
