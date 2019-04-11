@@ -10,26 +10,48 @@
   bool lamp3;
   int LDRValue = 0;
 
- 
-// Parameter 1 = number of pixels in strip
-// Parameter 2 = Arduino pin number (most are valid)
-// Parameter 3 = pixel type flags, add together as needed
-//   NEO_GRB     Pixels are wired for  GRB bitstream (most NeoPixel products)
-//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
-//   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products WS2812 LEDs)
-//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
+
+void setup() 
+
+{
+  randomSeed(analogRead(A0));
+Serial.begin(9600);
+  for(int i = 0; i < 4; i++){
+Serial.println("");
+}
+  
+}
+
+void loop() {
+
+  
+ if(analogRead(A15) > 950)
+  {
+  hinkelmodus();
+   
+  }
+  
+  if(analogRead(A15) < 950)
+  {
+    discomode();
+  }
+  LDRValue = analogRead(A15); //read the value from the LDR
+  Serial.println(LDRValue);
+  delay(1);
+
+}
+
 int hinkelmodus()
 {
     
       strip.begin(); 
      if (level == 0) {
     strip.clear();
-  strip.setPixelColor(7, 0, 255, 0); //Pixel 1 ROOD
+  strip.setPixelColor(7, 0, 255, 0); //Pixel 1 Red
   
-  strip.setBrightness(100);//Pixel 3 BLAUW
-  strip.show(); //Laat de kleuren zien!
+  strip.setBrightness(100);//Pixel 3 blue
+  strip.show(); //Shows the colors
 
  
 
@@ -49,19 +71,10 @@ int hinkelmodus()
          )
          
       {
-        fout();
+        error();
       }
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-
   if (level == 1) 
   {
     if(lamp == false)
@@ -91,7 +104,7 @@ int hinkelmodus()
           (digitalRead(7) == HIGH)
          )
       {
-        fout();
+        error();
       }
     }
     
@@ -113,23 +126,12 @@ int hinkelmodus()
           (digitalRead(7) == HIGH)
          )
       {
-        fout();
+        error();
       }
     }
     
   }
-
   
- 
-  
-
-  
-  
-  
-  
-  
-    
-
   if (level == 2) 
   {
     if(lamp2 == false)
@@ -160,7 +162,7 @@ int hinkelmodus()
           (digitalRead(7) == HIGH)
          )
       {
-        fout();
+        error();
       }
     }
     
@@ -182,7 +184,7 @@ int hinkelmodus()
           (digitalRead(7) == HIGH)
          )
       {
-        fout();
+        error();
       }
     }
     
@@ -217,7 +219,7 @@ int hinkelmodus()
           (digitalRead(12) == HIGH)
          )
       {
-        fout();
+        error();
       }
     }
     
@@ -239,7 +241,7 @@ int hinkelmodus()
           (digitalRead(13) == HIGH)
          )
       {
-        fout();
+        error();
       }
     }
     
@@ -257,13 +259,13 @@ int hinkelmodus()
     }
     delay(200);
     
-   gehaald();
+   achieved();
     
   }
 }
 
 
-int fout(){
+int error(){
   strip.setPixelColor(1,255,0,0);
   strip.setPixelColor(2,255,0,0);
   strip.setPixelColor(0,255,0,0);
@@ -280,7 +282,7 @@ int fout(){
   level = 0;
 }
 
-int gehaald(){
+int achieved(){
   lamp = false;
    lamp2 = false;
   lamp3 = false;
@@ -292,19 +294,16 @@ int gehaald(){
     int e = random(2,4);
     if(e == 2)
     {
-  strip.setPixelColor(6, 0xFF0000); //Pixel 3 BLAUW
+  strip.setPixelColor(6, 0xFF0000); //Pixel 3 blue
     }
       if(e == 3)
     {
-  strip.setPixelColor(1, 0xFF0000); //Pixel 3 BLAUW
+  strip.setPixelColor(1, 0xFF0000); //Pixel 3 blue
     }
     
   
-  strip.setBrightness(50);//Pixel 3 BLAUW
-    strip.show(); //Laat de kleuren zien!
-    
-    
-    
+  strip.setBrightness(50);//Pixel 3 blue
+    strip.show(); //Shows the colors
   }
 
  int level2(){  
@@ -312,18 +311,15 @@ int gehaald(){
     int e = random(4,6);
     if(e == 4)
     {
-  strip.setPixelColor(5, 0xFFFF00); //Pixel 3 BLAUW
+  strip.setPixelColor(5, 0xFFFF00); //Pixel 3 blue
     }
       if(e == 5)
     {
-  strip.setPixelColor(2, 0xFF00FF); //Pixel 3 BLAUW
+  strip.setPixelColor(2, 0xFF00FF); //Pixel 3 blue
     }
  
-  strip.setBrightness(50);//Pixel 3 BLAUW
-    strip.show(); //Laat de kleuren zien!
-    
-    
-    
+  strip.setBrightness(50);//Pixel 3 blue
+    strip.show(); //Shows the colors
   }
    
 
@@ -332,20 +328,18 @@ int gehaald(){
     int e = random(6,8);
   if(e == 6)
     {
-  strip.setPixelColor(4, 0xF000FF); //Pixel 3 BLAUW
+  strip.setPixelColor(4, 0xF000FF); //Pixel 3 blue
     }
       if(e == 7)
     {
-  strip.setPixelColor(3, 0x00FF00); //Pixel 3 BLAUW
+  strip.setPixelColor(3, 0x00FF00); //Pixel 3 blue
     }
   
-  strip.setBrightness(50);//Pixel 3 BLAUW
-    strip.show(); //Laat de kleuren zien!
-    
-    
+  strip.setBrightness(50);//Pixel 3 blue
+    strip.show(); //Shows the colors
   }
 
-int gekkekleuren(){
+int discomode(){
   // Fill along the length of the strip in various colors...
   colorWipe(strip.Color(255,   0,   0)     , 50); // Red
   colorWipe(strip.Color(  0, 255,   0)     , 50); // Green
@@ -478,41 +472,5 @@ void rainbowFade2White(int wait, int rainbowLoops, int whiteLoops) {
     }
   }
 
-  delay(1); // Pause 1/2 second
-}
-
-
-
-void setup() 
-
-{
-  randomSeed(analogRead(A0));
-Serial.begin(9600);
-  for(int i = 0; i < 4; i++){
-Serial.println("");
-}
-  
-}
-  
-
- 
-void loop() {
-
-  
- if(analogRead(A15) > 950)
-  {
-  hinkelmodus();
-   
-  }
-  
-  if(analogRead(A15) < 950)
-  {
-    gekkekleuren();
-  }
-  
-  
-  LDRValue = analogRead(A15); //read the value from the LDR
-  Serial.println(LDRValue);
-  delay(1);
-
+  delay(1); // Pause 1 second
 }
