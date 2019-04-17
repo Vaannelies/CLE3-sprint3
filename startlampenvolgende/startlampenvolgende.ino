@@ -10,7 +10,7 @@
   bool lamp3;
   int LDRValue = 0;
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(LEDS, PIN, NEO_GRB + NEO_KHZ800); //Initialize neopixels
 
 void setup() 
 
@@ -24,7 +24,7 @@ Serial.println("");
 }
 
 void loop() {
-
+//this loop checks if the hinkelmode or discomode is engaged. 
   
  if(analogRead(A15) > 950)
   {
@@ -55,7 +55,7 @@ int hinkelmodus()
 
  
 
-      if (digitalRead(13) == HIGH)
+      if (digitalRead(13) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -89,7 +89,7 @@ int hinkelmodus()
     if (strip.getPixelColor(6) != 0x000000)
     {
       Serial.println("2");
-      if (digitalRead(2) == HIGH)
+      if (digitalRead(2) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -111,7 +111,7 @@ int hinkelmodus()
     if (strip.getPixelColor(1) != 0x000000)
     {
     Serial.println("3");
-      if (digitalRead(3) == HIGH)
+      if (digitalRead(3) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -147,7 +147,7 @@ int hinkelmodus()
     if (strip.getPixelColor(5) != 0x000000)
     {
       Serial.println("4");
-      if (digitalRead(4) == HIGH)
+      if (digitalRead(4) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -169,7 +169,7 @@ int hinkelmodus()
     if (strip.getPixelColor(2) != 0x000000)
     {
     Serial.println("5");
-      if (digitalRead(5) == HIGH)
+      if (digitalRead(5) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -203,8 +203,8 @@ int hinkelmodus()
     
     if (strip.getPixelColor(4) != 0x000000)
     {
-      Serial.println("6");
-      if (digitalRead(6) == HIGH)
+      Serial.println("6"); 
+      if (digitalRead(6) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -226,7 +226,7 @@ int hinkelmodus()
     if (strip.getPixelColor(3) != 0x000000)
     {
     Serial.println("7");
-      if (digitalRead(7) == HIGH)
+      if (digitalRead(7) == HIGH) //Check if button is pressed
       {
         strip.clear();
         delay(500);
@@ -266,6 +266,7 @@ int hinkelmodus()
 
 
 int error(){
+  //this turns all the pixels red, if a wrong button is pressed
   strip.setPixelColor(1,255,0,0);
   strip.setPixelColor(2,255,0,0);
   strip.setPixelColor(0,255,0,0);
